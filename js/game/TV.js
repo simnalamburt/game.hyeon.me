@@ -92,7 +92,7 @@ function TV(scene){
 
 		// Chyron Text
 		if(!options.nothing){
-			var fontsize=100, max=14;
+			var fontsize=100, max=10;
 			if(text.length>max){ // more than [max] chars...
 				fontsize = Math.floor(max*fontsize/text.length);
 			}
