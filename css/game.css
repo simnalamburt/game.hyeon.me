@@ -1,8 +1,37 @@
+/* For Korean typography */
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url(//fonts.googleapis.com/earlyaccess/kopubbatang.css);
+
+@font-face {
+	font-family: 'MyTimes';
+	font-style: normal;
+	font-weight: 400;
+	src:
+		/* KoPub Batang */
+		url(//fonts.gstatic.com/ea/kopubbatang/v3/KoPubBatang-Regular.eot),
+		/* Times New Roman */
+		local('Times New Roman');
+	src:
+		/* KoPub Batang */
+		url(//fonts.gstatic.com/ea/kopubbatang/v3/KoPubBatang-Regular.eot?#iefix) format('embedded-opentype'),
+		url(//fonts.gstatic.com/ea/kopubbatang/v3/KoPubBatang-Regular.woff2) format('woff2'),
+		url(//fonts.gstatic.com/ea/kopubbatang/v3/KoPubBatang-Regular.woff) format('woff'),
+		url(//fonts.gstatic.com/ea/kopubbatang/v3/KoPubBatang-Regular.ttf) format('truetype'),
+		/* KoPub Batang */
+		local('Times New Roman');
+}
+
 @font-face {
 	font-family: 'Poppins';
 	font-style: normal;
 	font-weight: 400;
-	src: url('Poppins-Medium.ttf') format('truetype');
+	src:
+		/* Noto Sans KR */
+		url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff2) format('woff2'),
+		url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff) format('woff'),
+		url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.otf) format('opentype');
+		/* Poppins */
+		url('Poppins-Medium.ttf') format('truetype');
 }
 
 html, body{
@@ -10,7 +39,10 @@ html, body{
 	height: 100%;
 }
 body{
-	font-family: 'Poppins';
+	font-family: 'Poppins', sans-serif;
+	/* The attribute below is required for CJK users from seeing wierd hard line return. */
+	word-break: keep-all;
+
 	margin: 0;
 	background: #222;
 	position:relative;
@@ -56,4 +88,13 @@ body{
 }
 #paused{
 	cursor: pointer;
+}
+
+/* Workaround to prefetch desired webfont for IE & Safari */
+#prefetch-workaround {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -10;
+	font-family: MyTimes;
 }
