@@ -208,4 +208,116 @@ var textStrings_DE = {
 	"misatrributed"      : "(falsch zugeschrieben)" ,
 };
 
-var textStrings = textStrings_EN
+
+// Korean translation. Translated by:
+//
+// - Hyeon Kim <https://hyeon.me>
+// - Xnuk <https://www.xnu.kr>
+//
+// These are 7 Hangul consonants: ㄱ ㄴ ㄷ ㄹ ㅁ ㅂ ㅇ
+// These are 10 Hangul vowels: ㅏ ㅓ ㅐ ㅔ ㅣ ㅗ ㅜ ㅞ ㅚ ㅢ
+// These are 10 Hangul letters: 우리는된다목격우리가
+// Don't edit below if you cannot see any of these characters.
+var textStrings_KR = {
+	// Act 1
+	"niceHat"              : "우훗 멋진 모자",
+	"outtaHere"            : "그래 잘 가라",
+	"getARoom"             : "아주 방을 잡아라",
+	"notCoolAnymore"       : "모자는 더 이상 힙하지 않아",
+	"tvOnTv"               : "TV 안의... TV!",
+	"cricky"               : "쪼마난 기뚜라미 <3",
+	"tooManyCrickets"      : "그래 귀뚜라미 많다",
+	"normalPeep"           : "그냥 평범한 사람",
+	"normalPeeps"          : "그냥 좀 평범한 사람들",
+	"wowNothing"           : "와와 아무것도 없다!",
+
+	// Act 2
+	"crazySquareAttacks"   : "미친 네모의 습격",
+	"justMissed"           : "우우우우 놓쳤네요",
+	"somethingInteresting" : "(그거 말고 좀 *재밌는 거* 있잖아요...)",
+	"whoIsScreaming"       : "(그거 말고 소리 지르는 거 좀 찍어봐요)",
+	"circleFearsSquares"   : "동그라미는 네모를 무서워한다",
+	"whoScaresThem"        : "(*누구*를 무서워하는지도 찍어봐요)",
+	"areTheyScared"        : "(네모에게 겁에 질리는 *순간*을 찍어봐요)", // not used
+	"squaresSnubCircles"   : "네모는 동그라미를 무시한다",
+	"areTheySnubbed"       : "(네모가 동그라미들을 무시하는 *순간*을 찍어봐요)", // not used
+	"everyoneHates"        : "모두가 모두를 미워한다!!1!",
+	"almostEveryoneHates"  : "거의 모두가 모두를 미워한다...",
+	"squaresHateCircles"   : "네모는 동그라미를 미워한다",
+	"circlesHateSquares"   : "동그라미는 네모를 미워한다",
+	"areTheyYelling"       : "(저 사람들이 *소리 지를 때*를 찍어봐요)", // not used
+	"nerdsNow"             : "쟤넨 대체 뭐 하는 거야?",
+	"schockedPeep"         : "왜 이 사람은 놀랐을까?",
+	"whatever"             : "상관없어", // not used
+
+	// Act 3
+	"ellipsis"             : ". . .",
+	"coolNoMore"           : "모자 유행은 다 끝났어. 못 들었어?",
+	"beScared"             : "두려워하라! 분노하라!",
+
+	// MANIFESTO
+	"manifesto" : [
+		"*사이좋은 사람들*이나 나오는 걸 누가 보겠어?",
+		"평화는 지겨워. 폭력적인 게 더 인기 있어.",
+		"모든 이야기에는 갈등이 필요하지. 그러니까...",
+		"대중이 원하는 걸 보여줘.",
+	],
+
+	// -- Strings currently in graphics resources --
+
+	// (bg_preload.png) Preload screen
+	"playingTime"        : "플레이 시간: 5분",
+	"warning"            :
+		"경고: 이 게임에는 폭력, 속물, 무례한\n" +
+		"행동, 그리고 대량 살상이 포함되어\n" +
+		"있습니다. 시청에 주의하시길 바랍니다.",
+
+	// (cam-instructions.png) Camera Instructions
+	"pointAndClick"      : "조준 & 클릭", // not used
+
+	// (chyron3.png)
+	"chyronNothing"      : "어머, 아무것도 *없잖아*?", // not used
+
+	// (credits0001.png)
+	"createdBy"          : "제작",
+	"NickyCase"          : "Nicky Case",
+
+	// (credits0002.png)
+	"manyThanks"         : "고마운 테스터분들:",
+
+	// (credits000[3,4,5,6].png)
+	"patreonSupporters"  : "그리고 Patreon 서포터분들:",
+
+	// (credits0007.png)
+	"lastButNotLeast"    : "그리고 가장 중요한 당신에게,",
+
+	// (credits0008.png)
+	"thankYouForPlaying" : "플레이해주셔서 감사합니다!",
+
+	// (preload_play.png)
+	"playButton"         : "게임 시작", // not used
+
+	// (end_button.png) Post Credits
+	"otherWorkButton"    : "다른 작품 보러 가기", // not used
+	"buyCoffeeButton"    : "커피 사주기", // not used
+	"replayButton"       : "난장판 다시 보기", // not used
+
+	// (logo.png) Post Credits
+	"logoWBWWB"          : "이 고통을 공유하세요:", // not used
+
+	// (end_prototype.png)
+	"endOfPrototype"     : "프로토타입은 여기까지입니다.", // not used
+	"toBeContinued"      : "(다음에 계속!)", // not used
+
+	// (quote0002.png)
+	"WBWWB"              : "우리는 우리가 보는 대로 된다.",
+	"WSOTATOTSU"         : "우리가 도구를 만들듯이, 도구도 우리를 만든다.",
+
+	// (quote0003.png)
+	"MarshallMcLuhan"    : "Marshall McLuhan",
+
+	// (quote0004.png)
+	"misatrributed"      : "(실제로 한 말은 아님)",
+};
+
+var textStrings = textStrings_KR;
