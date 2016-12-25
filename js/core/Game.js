@@ -20,7 +20,7 @@ Handles the DOM, load, init, update & render loops
 	Game.init = function(HACK){
 
 		// Set up PIXI
-		Game.renderer = new PIXI.WebGLRenderer(Game.width, Game.height);
+		Game.renderer = new PIXI.autoDetectRenderer(Game.width, Game.height);
 		document.querySelector("#stage").appendChild(Game.renderer.view);
 		Game.stage = new PIXI.Container();
 		Game.stage.interactive = true;
