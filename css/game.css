@@ -31,7 +31,7 @@
 		url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff) format('woff'),
 		url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.otf) format('opentype');
 		/* Poppins */
-		url('Poppins-Medium.ttf') format('truetype');
+		url(Poppins-Medium.ttf) format('truetype');
 }
 
 html, body{
@@ -39,7 +39,6 @@ html, body{
 	height: 100%;
 }
 body{
-	font-family: 'Poppins', sans-serif;
 	/* The attribute below is required for CJK users from seeing wierd hard line return. */
 	word-break: keep-all;
 
