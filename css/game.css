@@ -90,15 +90,6 @@ body{
 	cursor: pointer;
 }
 
-/* Workaround to prefetch desired webfont for IE & Safari */
-#prefetch-workaround {
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: -10;
-	font-family: MyTimes;
-}
-
 /* TODO: Remove the warning message */
 a:link, a:visited {
 	color: #00bcff;
