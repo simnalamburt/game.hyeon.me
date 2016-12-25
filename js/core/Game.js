@@ -29,7 +29,7 @@ Handles the DOM, load, init, update & render loops
 		if(Game.stats){
 			Game.stats = new Stats();
 			Game.stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
-			document.body.appendChild(Game.stats.dom);
+			document.body.appendChild(Game.stats.domElement);
 		}
 
 		// Scene Manager
