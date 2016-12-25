@@ -73,13 +73,14 @@ body{
 }
 
 /* Workaround to prefetch desired webfont for IE & Safari */
-#prefetch-workaround {
+.prefetch {
 	position: absolute;
 	top: 0;
 	left: 0;
 	z-index: -10;
-	font-family: 'KoPub Batang (Subset)';
 }
+#f1 { font-family: 'KoPub Batang (Subset)'; }
+#f2 { font-family: 'Noto Sans KR (Subset)'; }
 
 /* TODO: Remove the warning message */
 a:link, a:visited {
