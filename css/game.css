@@ -21,7 +21,7 @@ html, body{
 	height: 100%;
 }
 body{
-	font-family: 'Noto Sans KR (Subset)', sans-serif;
+	font-family: '맑은 고딕', 'Malgun Gothic', '애플 SD 산돌고딕 Neo', 'Apple SD Gothic Neo', Ngothic, sans-serif;
 	/* The attribute below is required for CJK users from seeing wierd hard line return. */
 	word-break: keep-all;
 
