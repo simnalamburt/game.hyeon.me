@@ -38,7 +38,7 @@ function Scene_Preloader(){
 	var barEase = 0.9;
 
 	// Loading text
-	var text = new PIXI.Text("loading... 0%", {font:"25px Poppins", fill:"#4C4C4C", align:"center"});
+	var text = new PIXI.Text("loading... 0%", {font:"25px 'Noto Sans KR (Subset)'", fill:"#4C4C4C", align:"center"});
 	text.anchor.x = 0.5;
 	text.anchor.y = 0.5;
 	text.x = bar.x;
@@ -46,7 +46,7 @@ function Scene_Preloader(){
 	Game.stage.addChild(text);
 
 	// Playing time text
-	var playingTimeText = new PIXI.Text(textStrings["playingTime"], { font: "32px Poppins", fill: "#FFFFFF", align: "center" });
+	var playingTimeText = new PIXI.Text(textStrings["playingTime"], { font: "32px 'Noto Sans KR (Subset)'", fill: "#FFFFFF", align: "center" });
 	playingTimeText.anchor.x = 0.5;
 	playingTimeText.anchor.y = 0.5;
 	playingTimeText.x = bar.x;
@@ -54,7 +54,7 @@ function Scene_Preloader(){
 	Game.stage.addChild(playingTimeText);
 
 	// Warning text
-	var warningText = new PIXI.Text(textStrings["warning"], { font: "25px Poppins", fill: "#666666", align: "center" });
+	var warningText = new PIXI.Text(textStrings["warning"], { font: "25px 'Noto Sans KR (Subset)'", fill: "#666666", align: "center" });
 	warningText.anchor.x = 0.5;
 	warningText.anchor.y = 0.5;
 	warningText.x = bar.x;
