@@ -37,14 +37,11 @@ function Scene_Preloader(){
 	Game.stage.addChild(bar);
 	var barEase = 0.9;
 
-	// Since the loading screen can be rendered before browser completes the
-	// download of Noto Sans KR font, PIXI.js must know which font to fallback.
-	//
-	// Reference: http://www.beautifulcss.com/archives/431
+	// Prevent PIXI.js from rendering Gulim font
 	var fontFamily =
-		"'Noto Sans KR (Subset)', " + // Derised fonts
-		"'맑은 고딕', 'Malgun Gothic', " + // Fallback for Windows
-		"'애플 SD 산돌고딕 Neo', 'Apple SD Gothic Neo', " + // Fallback for OS X
+		"'맑은 고딕', 'Malgun Gothic', " + // Windows
+		"'애플 SD 산돌고딕 Neo', 'Apple SD Gothic Neo', " + // OS X
+		"'돋움', 'Dotum', dotum" +
 		"Ngothic, sans-serif";
 
 	// Loading text
