@@ -37,8 +37,18 @@ function Scene_Preloader(){
 	Game.stage.addChild(bar);
 	var barEase = 0.9;
 
+	// Since the loading screen can be rendered before browser completes the
+	// download of Noto Sans KR font, PIXI.js must know which font to fallback.
+	//
+	// Reference: http://www.beautifulcss.com/archives/431
+	var fontFamily =
+		"'Noto Sans KR (Subset)', " + // Derised fonts
+		"'맑은 고딕', 'Malgun Gothic', " + // Fallback for Windows
+		"'애플 SD 산돌고딕 Neo', 'Apple SD Gothic Neo', " + // Fallback for OS X
+		"Ngothic, sans-serif";
+
 	// Loading text
-	var text = new PIXI.Text("loading... 0%", {font:"25px Poppins", fill:"#4C4C4C", align:"center"});
+	var text = new PIXI.Text("loading... 0%", {font:"25px " + fontFamily, fill:"#4C4C4C", align:"center"});
 	text.anchor.x = 0.5;
 	text.anchor.y = 0.5;
 	text.x = bar.x;
@@ -46,7 +56,7 @@ function Scene_Preloader(){
 	Game.stage.addChild(text);
 
 	// Playing time text
-	var playingTimeText = new PIXI.Text(textStrings["playingTime"], { font: "32px Poppins", fill: "#FFFFFF", align: "center" });
+	var playingTimeText = new PIXI.Text(textStrings["playingTime"], { font: "32px " + fontFamily, fill: "#FFFFFF", align: "center" });
 	playingTimeText.anchor.x = 0.5;
 	playingTimeText.anchor.y = 0.5;
 	playingTimeText.x = bar.x;
@@ -54,7 +64,7 @@ function Scene_Preloader(){
 	Game.stage.addChild(playingTimeText);
 
 	// Warning text
-	var warningText = new PIXI.Text(textStrings["warning"], { font: "25px Poppins", fill: "#666666", align: "center" });
+	var warningText = new PIXI.Text(textStrings["warning"], { font: "25px " + fontFamily, fill: "#666666", align: "center" });
 	warningText.anchor.x = 0.5;
 	warningText.anchor.y = 0.5;
 	warningText.x = bar.x;
