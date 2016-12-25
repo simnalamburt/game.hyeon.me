@@ -22,28 +22,29 @@
 	<meta name="twitter:url" content="https://game.hyeon.me/wbwwb"/>
 </head>
 <body>
-	<div id="stage">
-		<div id="warning-1">영어 원작 보러가기 ㅡ
-			<a href="https://ncase.itch.io/wbwwb">https://ncase.itch.io/wbwwb</a></div>
-		<div id="warning-2">&#x26a0;  아직 번역이 진행중입니다. IRC의 #hyeon 채널 이외의 곳에 공유하지 말아주세요. &#x26a0;</div>
-	</div>
-	<div id="modal_shade"></div>
-	<div class="overlay" id="warning">
-		<div>oh noes</div>
-		<div>
-		your browser doesn't support webgl.<br>
-		try a different browser or computer?
-		</div>
-	</div>
-	<div class="overlay" id="paused">
-		<div>일시정지됨</div>
-		<div>다시 시작하려면 아무곳이나 클릭하세요</div>
-	</div>
 
-	<!-- Workaround to prefetch desired webfont for IE & Safari -->
-	<div id="prefetch-workaround">&#xfeff;</div>
-</body>
-</html>
+
+<div id="stage">
+	<div id="warning-1">영어 원작 보러가기 ㅡ
+		<a href="https://ncase.itch.io/wbwwb">https://ncase.itch.io/wbwwb</a></div>
+	<div id="warning-2">&#x26a0;  아직 번역이 진행중입니다. IRC의 #hyeon 채널 이외의 곳에 공유하지 말아주세요. &#x26a0;</div>
+</div>
+<div id="modal_shade"></div>
+<div class="overlay" id="warning">
+	<div>oh noes</div>
+	<div>
+	your browser doesn't support webgl.<br>
+	try a different browser or computer?
+	</div>
+</div>
+<div class="overlay" id="paused">
+	<div>일시정지됨</div>
+	<div>다시 시작하려면 아무곳이나 클릭하세요</div>
+</div>
+
+<!-- Workaround to prefetch desired webfont for IE & Safari -->
+<div id="prefetch-workaround">&#xfeff;</div>
+
 
 <!-- External Libraries -->
 <script src="js/lib/pixi.min.js"></script>
@@ -123,3 +124,6 @@ window.onload = function(){
 window.SHARE_TEXT = "방금 뉴스에 관한 엄청나게 이상한 게임을 했어. WE BECOME WHAT WE BEHOLD 한국어 번역";
 window.SHARE_URL = "https://game.hyeon.me/wbwwb";
 </script>
+
+</body>
+</html>
