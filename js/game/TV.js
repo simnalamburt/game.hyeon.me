@@ -96,7 +96,7 @@ function TV(scene){
 			if(text.length>max){ // more than [max] chars...
 				fontsize = Math.floor(max*fontsize/text.length);
 			}
-			var text = new PIXI.Text(text, {font:"bold "+fontsize+"px Poppins", fill:"#FFF"});
+			var text = new PIXI.Text(text, {font:"bold "+fontsize+"px 'Noto Sans KR (Subset)'", fill:"#FFF"});
 			text.scale.x = text.scale.y = 0.2;
 			text.anchor.x = 0;
 			text.anchor.y = 0.5;
