@@ -27,10 +27,10 @@
 <div id="stage"></div>
 <div id="modal_shade"></div>
 <div class="overlay" id="warning">
-	<div>oh noes</div>
+	<div>Oops</div>
 	<div>
-	your browser doesn't support webgl.<br>
-	try a different browser or computer?
+		Your browser doesn't support <a href="https://get.webgl.org">WebGL</a>.<br>
+		Try a different browser or computer.
 	</div>
 </div>
 <div class="overlay" id="paused">
@@ -106,17 +106,28 @@
 <script src="js/scenes/Act_III.js"></script>
 <script src="js/scenes/Scene_Meta.js"></script>
 
-<!-- Game Scripts -->
+<!-- Entry Point -->
 <script>
+"use strict";
+
+// Disable statistics
 Game.stats = false;
-window.onload = function(){
-	try{
-		Game.init();
-		//Game.init("Game");
-	}catch(e){
-		document.getElementById("warning").style.display = "block";
-	}
-};
+try {
+	// Start the game
+	Game.init();
+} catch(exception) {
+	// Display warning message
+	document.getElementById("warning").style.display = "block";
+
+	// Remove Game DOMs
+	["stage", "modal_shade", "paused"].map(function(id) {
+		document.getElementById(id).remove();
+	});
+
+	// Echo the exception
+	throw exception;
+}
+
 window.SHARE_TEXT = "방금 뉴스에 관한 엄청나게 이상한 게임을 했어. WE BECOME WHAT WE BEHOLD 한국어 번역";
 window.SHARE_URL = "https://game.hyeon.me/wbwwb";
 </script>
