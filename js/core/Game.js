@@ -78,17 +78,14 @@ Handles the DOM, load, init, update & render loops
 	// GAME PAUSED?
 	// ON BLUR & PAUSE
 
-	var modal_shade = document.getElementById("modal_shade");
 	var paused = document.getElementById("paused");
-	window.onblur = function(){
-		if(Game.scene && Game.scene.UNPAUSEABLE) return;
-		modal_shade.style.display = "block";
+	window.onblur = function() {
+		if (Game.scene && Game.scene.UNPAUSEABLE) return;
 		paused.style.display = "block";
 		Game.paused = true;
 		Howler.mute(true);
 	}
-	modal_shade.onclick = paused.onclick = function(){
-		modal_shade.style.display = "none";
+	paused.onclick = function(){
 		paused.style.display = "none";
 		Game.paused = false;
 		Howler.mute(false);

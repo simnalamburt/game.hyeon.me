@@ -29,47 +29,51 @@ body{
 	background: #222;
 	position:relative;
 }
-#stage{
-	background: #000;
+
+a {
+	color: #ffcb33;
+	text-decoration: inherit;
+}
+a:hover {
+	text-decoration: underline;
+}
+
+#stage {
 	width:960px; height:540px;
 	position:absolute;
 	margin:auto;
 	top:0; left:0; right:0; bottom:0;
 	cursor: none;
 }
-.overlay{
 
+.overlay {
 	display: none;
 
-	text-align: center;
+	padding-top: 170px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+
 	color: #fff;
+	text-align: center;
 	letter-spacing: 1px;
-
-	width:500px; height:170px;
-
-	position:absolute;
-	margin:auto;
-	top:0; left:0; right:0; bottom:0;
-
 }
-.overlay > div:nth-child(1){
+.overlay > * { margin: 0 }
+.overlay > h1 {
 	font-size: 100px;
-	line-height: 100px;
+	font-weight: normal;
 }
-.overlay > div:nth-child(2){
+.overlay > p {
 	font-size: 20px;
 }
-#modal_shade{
-	display: none;
-	background: rgba(0,0,0,0.8);
-	width:960px; height:540px;
-	position:absolute;
-	margin:auto;
-	top:0; left:0; right:0; bottom:0;
+#paused {
+	background: rgba(0, 0, 0, 0.8);
 	cursor: pointer;
 }
-#paused{
-	cursor: pointer;
+#webgl-error {
+	cursor: auto;
 }
 
 /* Workaround to prefetch desired webfont for IE & Safari */
