@@ -1,36 +1,33 @@
+"우리는 우리가 보는 대로 된다"
+========
+
 ![banner](https://i.imgur.com/f6FcrhT.png)
 
-*a game about news cycles, vicious cycles, infinite cycles*
+> *뉴스의 순환, 악순환, 무한 사이클에 관한 게임*
 
-**[PLAY ON ITCH.IO](https://ncase.itch.io/wbwwb)**
+### [플레이 하러가기](https://game.hyeon.me/wbwwb)
+
+<br>
 
 ---
 
-###Made with open culture, for open culture!
+### Made with open culture, for open culture!
+이 게임은 Nicky Case가 만든 게임인 "We Become What We Behold"를 포크하여,
+한국어로 번역한것입니다. 원본 소스코드는
+[github.com/ncase/wbwwb](https://github.com/ncase/wbwwb)를 참고해주세요.
 
-I'm releasing all my code and art to the public domain, under the [Creative Commons Zero](http://creativecommons.org/publicdomain/zero/1.0/) un-license. Which means if you wanna remix this to make your own way-too-meta game, or use it in a presentation or classroom or whatever, you already have my permission!
+### Roadmap
 
-However, not *all* the code/art is mine. Credit's due where credit's due, so...
+- [x] 스트링 번역
+- [x] 스프라이트 내의 영문들 번역
+- [x] Noto Sans KR, KoPub Batang 폰트 적용
+- [x] 한국어 웹폰트 로딩속도 최적화
+    1.  폰트들 KS C 5601 서브셋으로 가공
+	1.  [Prefetch Hack]으로 폰트들 로딩시점 조절
+- [x] PIXI.js 업데이트, Deprecated된 API 호출 교체
+- [x] WebGL이 지원되지 않는 브라우저에선 `<canvas>`로 fallback하도록 수정
+- [ ] 전문가에게서 번역 검수받기
+- [ ] Webpack 넣기
+- [ ] 웹폰트 로딩이 `DOMContentLoaded` 이벤트를 지연시키는 문제 해결
 
-**CODE:**
-- [PIXI.js](https://github.com/pixijs/pixi.js), for rendering the graphics (MIT License)
-- [Howler.js](https://github.com/goldfire/howler.js), for playing the sounds (MIT License)
-
-**SOUNDS:**
-- [squeak!](https://www.freesound.org/people/ermfilm/sounds/130011/) (CC BY)
-- [park ambience](https://www.freesound.org/people/Mafon2/sounds/274175/) (CC Zero)
-- [camera shutter](https://www.freesound.org/people/uEffects/sounds/207865/) (CC Zero)
-- [single cricket](https://www.freesound.org/people/cs272/sounds/77034/) (CC-BY)
-- [multiple crickets](https://www.freesound.org/people/alienistcog/sounds/124583/) (CC Zero)
-- [news jingle](https://www.freesound.org/people/Tuben/sounds/272044/) (CC Zero)
-- [scream #1](https://www.freesound.org/people/GreatNate98/sounds/353086/) (CC Zero)
-- [scream #2](https://www.freesound.org/people/mariallinas/sounds/222649/) (CC Zero)
-- [gunshot](https://www.freesound.org/people/mitchelk/sounds/136766/) (CC Zero)
-- [gun cocked](https://www.freesound.org/people/martian/sounds/182229/) (CC Zero)
-- [shotgun](https://www.freesound.org/people/lensflare8642/sounds/145209/) (CC Zero)
-- [bloody impact](https://www.freesound.org/people/Hybrid_V/sounds/319590/) (CC BY)
-- [creepy warp sound](https://www.freesound.org/people/Andromadax24/sounds/184476/) (CC BY)
-- [crowd screaming](https://www.freesound.org/people/MultiMax2121/sounds/156860/) (CC Zero)
-
-**ART:**
-- For the ending, I modified [this photo of a laptop](https://unsplash.com/photos/XyNi3rUEReE). (CC Zero)
+[Prefetch Hack]: https://github.com/simnalamburt/wbwwb-kr/blob/master/index.html#L67-L69
