@@ -25,7 +25,10 @@ body{
 	/* The attribute below is required for CJK users from seeing wierd hard line return. */
 	word-break: keep-all;
 
+	box-sizing: border-box;
 	margin: 0;
+	padding: 100px 10px 10px;
+
 	background: #222;
 	position:relative;
 }
@@ -39,11 +42,14 @@ a:hover {
 }
 
 #stage {
-	width:960px; height:540px;
-	position:absolute;
-	margin:auto;
-	top:0; left:0; right:0; bottom:0;
-	cursor: none;
+	position: relative;
+	max-width: 960px;
+	margin: 0 auto;
+}
+#stage > canvas {
+	width: 100%;
+	cursor: none !important;
+	display: block;
 }
 
 .overlay {
