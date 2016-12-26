@@ -27,7 +27,7 @@ body{
 
 	box-sizing: border-box;
 	margin: 0;
-	padding: 100px 10px 10px;
+	padding: 60px 20px;
 
 	background: #222;
 	position:relative;
@@ -91,3 +91,10 @@ a:hover {
 }
 #f1 { font-family: 'KoPub Batang (Subset)'; }
 #f2 { font-family: 'Noto Sans KR (Subset)'; }
+
+@media (max-width: 1000px) {
+	.github-corner { display: none }
+
+	.overlay { padding-top: 50px; }
+	.overlay > h1 { font-size: 50px; }
+}
