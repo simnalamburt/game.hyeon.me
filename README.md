@@ -30,4 +30,4 @@
 - [ ] Webpack 넣기
 - [ ] 웹폰트 로딩이 `DOMContentLoaded` 이벤트를 지연시키는 문제 해결
 
-[Prefetch Hack]: https://github.com/simnalamburt/wbwwb-kr/blob/master/index.html#L67-L69
+[Prefetch Hack]: https://github.com/simnalamburt/wbwwb-ko/blob/master/index.html#L67-L69
