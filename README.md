@@ -1,8 +1,7 @@
-"우리는 우리가 보는 대로 된다"
-========
+![We Become What We Behold](https://i.imgur.com/f6FcrhT.png)
 
-![banner](https://i.imgur.com/f6FcrhT.png)
-
+> ### "우리는 우리가 보는 대로 된다"
+>
 > *뉴스의 순환, 악순환, 무한 사이클에 관한 게임*
 
 ### [플레이 하러가기](https://game.hyeon.me/wbwwb)
