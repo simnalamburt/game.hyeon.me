@@ -27,11 +27,13 @@ body{
 
 	box-sizing: border-box;
 	margin: 0;
-	padding: 60px 20px;
+	padding: 0 0 20px;
 
 	color: #d2d2d2;
 	background: #222;
 	position:relative;
+
+	text-align: center;
 }
 
 a {
@@ -44,11 +46,15 @@ a:hover {
 
 #stage {
 	position: relative;
-	max-width: 960px;
-	margin: 0 auto;
+	display: inline-block;
 }
 #stage > canvas {
-	width: 100%;
+	/* Reference: http://stackoverflow.com/a/20593342 */
+	width: 100vw;
+	height: 56.25vw;
+	max-height: 100vh;
+	max-width: 177.777777778vh;
+
 	cursor: none !important;
 	display: block;
 }
@@ -64,7 +70,6 @@ a:hover {
 	bottom: 0;
 
 	color: #fff;
-	text-align: center;
 	letter-spacing: 1px;
 }
 .overlay > * { margin: 0 }
@@ -89,7 +94,6 @@ footer {
 
 	display: flex;
 	justify-content: center;
-	text-align: center;
 }
 footer > div {
 	flex-grow: 1;
@@ -113,8 +117,6 @@ footer img {
 #f2 { font-family: 'Noto Sans KR (Subset)'; }
 
 @media (max-width: 1000px) {
-	.github-corner { display: none }
-
 	.overlay { padding-top: 50px; }
 	.overlay > h1 { font-size: 50px; }
 }
