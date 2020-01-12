@@ -30,24 +30,22 @@
   }
 
   #game {
-    /* TODO: 환경마다 바꾸기 */
-    --repeat-count: 7;
+    /* --repeat-count 는 js로 정의됨 */
     --padding-size: 50px;
     --gap-size: 20px;
+    --game-size: calc(100vmin - 2*var(--padding-size));
     --door-size: calc(
-      (
-        100vmin - (var(--repeat-count) - 1)*var(--gap-size) - 2*var(--padding-size)
-      )/var(--repeat-count)
+      (var(--game-size) - (var(--repeat-count) - 1)*var(--gap-size))/var(--repeat-count)
     );
 
     display: grid;
-    width: calc(var(--repeat-count)*var(--door-size) + (var(--repeat-count) - 1)*var(--gap-size));
+    width: var(--game-size);
+    height: var(--game-size);
     margin: calc(var(--padding-size)/2) auto;
     padding: calc(var(--padding-size)/2);
     background: white;
-    grid-template-columns: repeat(var(--repeat-count), var(--door-size));
+    grid: repeat(var(--repeat-count), var(--door-size)) / repeat(var(--repeat-count), var(--door-size));
     grid-gap: var(--gap-size);
-    justify-content: center;
   }
 
   #game > img {
@@ -60,29 +58,85 @@
 <body>
 
 
-<div id=game>
-  <script>
-  document.write(html)
-  </script>
-</div>
+<script type="module">
+// TODO: 버전 고정하기
+import { h, render } from 'https://unpkg.com/preact@latest?module'
+import { useReducer } from 'https://unpkg.com/preact@latest/hooks/dist/hooks.module.js?module'
+import produce from 'https://cdn.jsdelivr.net/npm/immer@5.2.1/dist/immer.module.min.js'
+import htm from 'https://unpkg.com/htm@2.2.1/dist/htm.module.js?module'
 
-<script>
-const game = document.getElementById('game')
-const repeat_count = getComputedStyle(game).getPropertyValue('--repeat-count')|0
+const html = htm.bind(h)
 
-let html = '';
-for (let i = 0; i < repeat_count; ++i) {
-  for (let j = 0; j < repeat_count; ++j) {
-    const rand = Math.random()
-    html += (
-      rand <= 0.01 ? `<img alt="Tesla Cybertruck" src="https://www.tesla.com/ns_videos/p-social-card.jpg">` :
-      rand <= 0.1 ? `<img alt="A goat" src="goat.svg">` :
-      `<img alt="A closed door" src="door.svg">`
-    )
+/*
+type State =
+  { t: 'begin', size: number, car: number } |
+  { t: 'answer_right', size: number, car: number, bait: number } |
+  { t: 'answer_wrong', size: number, car: number, wrong_answer: number } |
+  { t: 'win', size: number, car: number } |
+  { t: 'lose', size: number, car: number, wrong_answer: number } |
+  { t: 'errored' }
+
+type Action =
+  ['first_answer', number] |
+  ['second_answer', number]
+*/
+
+const reducer = (state, action) => {
+  const [cmd, args] = action
+  switch(cmd) {
+    case 'first_answer':
+      const [answer] = args
+      switch(state.t) {
+      /* TODO
+        case 'begin': return (
+          state.car === answer ?
+          { t: 'answer_right', kkkkkkkkkkkkkkk
+          */
+        default: return { t: 'errored' }
+      }
+    case 'second_answer':
+      // TODO
+      return
   }
 }
 
-game.insertAdjacentHTML('afterbegin', html)
+let initialState = { type: 'begin', size: 7, car: randint(7**2) }
+
+const App = () => {
+  const [state, dispatch] = useReducer(reducer, initialState)
+
+  // TODO; errored 처리
+
+  return html`
+    <div id=game>
+      ${repeat(state.size, row =>
+        repeat(state.size, col => {
+          const n = row*state.size + col
+          return html`
+            <img id="cell-${n}" alt="A closed door" src="door.svg"
+              onClick=${() => dispatch(['first_answer', n])} />
+          `
+        })
+      )}
+    </div>
+    <style>
+    #game {
+      --repeat-count: ${state.size};
+    }
+    </style>
+  `
+}
+
+render(h(App), document.body)
+
+function repeat(count, func) {
+  return Array.from({ length: count }, (_, i) => func(i))
+}
+
+// Return a random integer in [0, n)
+function randint(n) {
+  return (Math.random() * n)|0
+}
 </script>
 
 
