@@ -54,12 +54,36 @@
 
   #game > img.goat {
     background: ivory;
+    animation: 0.8s cubic-bezier(.96,0,.34,.97) forwards die;
+  }
+  @keyframes die {
+    to {
+      opacity: 0.2;
+      transform: scale(0.8);
+    }
   }
 
   #game > img.car {
     background: yellow;
+    animation-name: highlight1, highlight2;
+    animation-duration: 0.21s, 0.19s;
+    animation-delay: 0s, 0.21s;
+    animation-timing-function: cubic-bezier(.09,.14,.52,.86), cubic-bezier(.51,-0.31,.26,1.33);
+    animation-fill-mode: forwards, forwards;
   }
-
+  @keyframes highlight1 {
+    to {
+      transform: scale(2.3);
+    }
+  }
+  @keyframes highlight2 {
+    from {
+      transform: scale(2.3);
+    }
+    to {
+      transform: scale(2);
+    }
+  }
   </style>
   <!-- Preload images -->
   <link ref=preload href=door.svg as=image importance=high>
