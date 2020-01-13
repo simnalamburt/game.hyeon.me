@@ -136,18 +136,18 @@ const App = () => {
             case 'answer_right': return (
               state.car === n || state.bait === n ?
               e`<${Door} onClick=${() => dispatch(['second_answer', n])}/>` :
-              e`<${Goat} onClick=${() => dispatch(['second_answer', n])}/>`
+              e`<${Goat} onClick=${() => dispatch(['second_answer', n])} key=${n}/>`
             )
             case 'answer_wrong': return (
               state.car === n || state.wrong_answer === n ?
               e`<${Door} onClick=${() => dispatch(['second_answer', n])}/>` :
-              e`<${Goat} onClick=${() => dispatch(['second_answer', n])}/>`
+              e`<${Goat} onClick=${() => dispatch(['second_answer', n])} key=${n}/>`
             )
             case 'win': // fallthrough
             case 'lose': return (
               state.car === n ?
               e`<${Car}/>` :
-              e`<${Goat}/>`
+              e`<${Goat} key=${n}/>`
             )
             case 'errored': return undefined
           }
