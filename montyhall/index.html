@@ -54,10 +54,10 @@
     object-fit: cover;
   }
   </style>
-  <!-- Prefetch images -->
-  <link ref="prefetch" href="door.svg">
-  <link ref="prefetch" href="goat.svg">
-  <link ref="prefetch" href="car.svg">
+  <!-- Preload images -->
+  <link ref=preload href=door.svg as=image importance=high>
+  <link ref=preload href=goat.svg as=image importance=high>
+  <link ref=preload href=car.svg  as=image importance=low>
 </head>
 <body>
 
@@ -175,6 +175,16 @@ function randint(n) {
 function randint_except(n, except) {
   const ret = (Math.random() * (n - 1))|0
   return ret >= except ? ret + 1 : ret
+}
+
+// Manually preload images if browser does not support preload
+// Reference:
+//   https://github.com/w3c/preload/issues/7#issuecomment-566791118
+const rel = document.createElement('link').relList
+if (!(rel && rel.supports && rel.supports('preload'))) {
+  new Image().src = 'door.svg'
+  new Image().src = 'goat.svg'
+  new Image().src = 'car.svg'
 }
 </script>
 
