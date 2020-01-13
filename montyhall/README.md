@@ -21,3 +21,4 @@ Simple Monty Hall simulator
 - README, montyhall/README 꾸미기
 - 아카믹님 애트리뷰션 넣기
 - 저작권 파일 만들기
+- 브라우저별로 테스트하기
