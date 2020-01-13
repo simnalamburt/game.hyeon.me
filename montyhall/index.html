@@ -29,7 +29,7 @@
   #game {
     /* --repeat-count 는 js로 정의됨 */
     --padding-size: 50px;
-    --gap-size: 20px;
+    --gap-size: calc(200px/var(--repeat-count));
     --game-size: calc(100vmin - 2*var(--padding-size));
     --door-size: calc(
       (var(--game-size) - (var(--repeat-count) - 1)*var(--gap-size))/var(--repeat-count)
@@ -49,13 +49,13 @@
     width: var(--door-size);
     height: var(--door-size);
     object-fit: cover;
-    border-radius: 1rem;
+    border-radius: 15%;
   }
 
   #game > img.goat {
     background: ivory;
   }
-  
+
   #game > img.car {
     background: yellow;
   }
@@ -76,7 +76,8 @@ import htm from 'https://cdn.jsdelivr.net/npm/htm@2.2.1/dist/htm.mjs'
 
 const e = htm.bind(h)
 
-let initialState = { t: 'begin', size: 10, car: randint(10**2) }
+const size = 10
+let initialState = { t: 'begin', size, car: randint(size**2) }
 /*
 type State =
   { t: 'begin', size: number, car: number } |
