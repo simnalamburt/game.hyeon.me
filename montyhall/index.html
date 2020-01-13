@@ -54,19 +54,25 @@
     object-fit: cover;
   }
   </style>
+  <!-- Prefetch images -->
+  <link ref="prefetch" href="door.svg">
+  <link ref="prefetch" href="goat.svg">
+  <link ref="prefetch" href="car.svg">
 </head>
 <body>
 
 
 <script type="module">
 // TODO: 버전 고정하기
+// TODO: MS Edge에서 object spread 안됨
 import { h, render } from 'https://unpkg.com/preact@latest?module'
 import { useReducer } from 'https://unpkg.com/preact@latest/hooks/dist/hooks.module.js?module'
 import produce from 'https://cdn.jsdelivr.net/npm/immer@5.2.1/dist/immer.module.min.js'
 import htm from 'https://unpkg.com/htm@2.2.1/dist/htm.module.js?module'
 
-const html = htm.bind(h)
+const e = htm.bind(h)
 
+let initialState = { t: 'begin', size: 10, car: randint(10**2) }
 /*
 type State =
   { t: 'begin', size: number, car: number } |
@@ -82,40 +88,66 @@ type Action =
 */
 
 const reducer = (state, action) => {
-  const [cmd, args] = action
+  const [cmd, ...args] = action
   switch(cmd) {
     case 'first_answer':
-      const [answer] = args
       switch(state.t) {
-      /* TODO
         case 'begin': return (
-          state.car === answer ?
-          { t: 'answer_right', kkkkkkkkkkkkkkk
-          */
+          state.car === args[0] ?
+          { ...state, t: 'answer_right', bait: randint_except(state.size**2, args[0]) } :
+          { ...state, t: 'answer_wrong', wrong_answer: args[0] }
+        )
         default: return { t: 'errored' }
       }
     case 'second_answer':
-      // TODO
-      return
+      switch(state.t) {
+        case 'answer_right': // fallthrough
+        case 'answer_wrong': return (
+          state.car === args[0] ?
+          { ...state, t: 'win' } :
+          { ...state, t: 'lose', wrong_answer: args[0] }
+        )
+        default: return { t: 'errored' }
+      }
   }
 }
 
-let initialState = { type: 'begin', size: 7, car: randint(7**2) }
+const Door = props => e`<img ...${props} alt="A closed door" src="door.svg"/>`
+const Goat = props => e`<img ...${props} alt="A goat" src="goat.svg"/>`
+const Car = props => e`<img ...${props} alt="A car" src="car.svg"/>`
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState)
 
-  // TODO; errored 처리
-
-  return html`
+  // TODO: errored, win, lose 처리하기
+  return e`
     <div id=game>
       ${repeat(state.size, row =>
         repeat(state.size, col => {
           const n = row*state.size + col
-          return html`
-            <img id="cell-${n}" alt="A closed door" src="door.svg"
-              onClick=${() => dispatch(['first_answer', n])} />
-          `
+
+          switch (state.t) {
+            case 'begin': return (
+              e`<${Door} onClick=${() => dispatch(['first_answer', n])}/>`
+            )
+            case 'answer_right': return (
+              state.car === n || state.bait === n ?
+              e`<${Door} onClick=${() => dispatch(['second_answer', n])}/>` :
+              e`<${Goat} onClick=${() => dispatch(['second_answer', n])}/>`
+            )
+            case 'answer_wrong': return (
+              state.car === n || state.wrong_answer === n ?
+              e`<${Door} onClick=${() => dispatch(['second_answer', n])}/>` :
+              e`<${Goat} onClick=${() => dispatch(['second_answer', n])}/>`
+            )
+            case 'win': // fallthrough
+            case 'lose': return (
+              state.car === n ?
+              e`<${Car}/>` :
+              e`<${Goat}/>`
+            )
+            case 'errored': return undefined
+          }
         })
       )}
     </div>
@@ -127,8 +159,9 @@ const App = () => {
   `
 }
 
-render(h(App), document.body)
+render(e`<${App}/>`, document.body)
 
+// Utility function which is equivalent to `[0, 1, ..., count-1].map(func)`
 function repeat(count, func) {
   return Array.from({ length: count }, (_, i) => func(i))
 }
@@ -136,6 +169,12 @@ function repeat(count, func) {
 // Return a random integer in [0, n)
 function randint(n) {
   return (Math.random() * n)|0
+}
+
+// Return a random integer in [0, except) ∩ (except, n)
+function randint_except(n, except) {
+  const ret = (Math.random() * (n - 1))|0
+  return ret >= except ? ret + 1 : ret
 }
 </script>
 
