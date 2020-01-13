@@ -132,10 +132,9 @@ let initialState = { t: 'begin', size, car: randint(size**2) }
 /*
 type State =
   { t: 'begin', size: number, car: number } |
-  { t: 'answer_right', size: number, car: number, bait: number } |
-  { t: 'answer_wrong', size: number, car: number, wrong_answer: number } |
-  { t: 'win', size: number, car: number } |
-  { t: 'lose', size: number, car: number, wrong_answer: number } |
+  { t: 'confirm', size: number, car: number, bait: number } |
+  { t: 'win', size: number, car: number, bait: number } |
+  { t: 'lose', size: number, car: number, bait: number } |
   { t: 'errored' }
 
 type Action =
@@ -148,20 +147,17 @@ const reducer = (state, action) => {
   switch(cmd) {
     case 'first_answer':
       switch(state.t) {
-        case 'begin': return (
-          state.car === args[0] ?
-          Object.assign({}, state, { t: 'answer_right', bait: randint_except(state.size**2, args[0]) }) :
-          Object.assign({}, state, { t: 'answer_wrong', wrong_answer: args[0] })
-        )
+        case 'begin':
+          const bait = state.car === args[0] ? randint_except(state.size**2, args[0]) : args[0]
+          return Object.assign({}, state, { t: 'confirm', bait })
         default: return { t: 'errored' }
       }
     case 'second_answer':
       switch(state.t) {
-        case 'answer_right': // fallthrough
-        case 'answer_wrong': return (
+        case 'confirm': return (
           state.car === args[0] ?
           Object.assign({}, state, { t: 'win' }) :
-          Object.assign({}, state, { t: 'lose', wrong_answer: args[0] })
+          Object.assign({}, state, { t: 'lose' })
         )
         default: return { t: 'errored' }
       }
@@ -193,24 +189,15 @@ const App = () => {
             case 'begin': return (
               e`<${Door} onClick=${() => dispatch(['first_answer', n])}/>`
             )
-            case 'answer_right': return (
+            case 'confirm': return (
               state.car === n || state.bait === n ?
               e`<${Door} onClick=${() => dispatch(['second_answer', n])}/>` :
               e`<${Goat} onClick=${() => dispatch(['second_answer', n])} key=${n}/>`
             )
-            case 'answer_wrong': return (
-              state.car === n || state.wrong_answer === n ?
-              e`<${Door} onClick=${() => dispatch(['second_answer', n])}/>` :
-              e`<${Goat} onClick=${() => dispatch(['second_answer', n])} key=${n}/>`
-            )
-            case 'win': return (
-              state.car === n ?
-              e`<${Car}/>` :
-              e`<${Goat} key=${n}/>`
-            )
+            case 'win': // fallthrough
             case 'lose': return (
               n === state.car ? e`<${Car}/>` :
-              n ===state.wrong_answer ? e`<${Goat} nofade key=${n}/>` :
+              n === state.bait ? e`<${Goat} nofade key=${n}/>` :
               e`<${Goat} key=${n}/>`
             )
             case 'errored': return undefined
