@@ -49,7 +49,17 @@
     width: var(--door-size);
     height: var(--door-size);
     object-fit: cover;
+    border-radius: 1rem;
   }
+
+  #game > img.goat {
+    background: ivory;
+  }
+  
+  #game > img.car {
+    background: yellow;
+  }
+
   </style>
   <!-- Preload images -->
   <link ref=preload href=door.svg as=image importance=high>
@@ -106,9 +116,9 @@ const reducer = (state, action) => {
   }
 }
 
-const Door = props => e`<img ...${props} alt="A closed door" src="door.svg"/>`
-const Goat = props => e`<img ...${props} alt="A goat" src="goat.svg"/>`
-const Car = props => e`<img ...${props} alt="A car" src="car.svg"/>`
+const Door = props => e`<img ...${props} class="door" alt="A closed door" src="door.svg"/>`
+const Goat = props => e`<img ...${props} class="goat" alt="A goat" src="goat.svg"/>`
+const Car = props => e`<img ...${props} class="car" alt="A car" src="car.svg"/>`
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState)
