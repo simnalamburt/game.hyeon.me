@@ -45,15 +45,20 @@
     grid-gap: var(--gap-size);
   }
 
-  #game > img {
+  #game img {
     width: var(--door-size);
     height: var(--door-size);
     object-fit: cover;
     border-radius: 15%;
   }
 
-  #game > img.goat {
+  #game .goat {
     background: ivory;
+  }
+  #game .goat > img {
+    position: absolute;
+  }
+  #game .goat > img.goat {
     animation: 0.8s cubic-bezier(.96,0,.34,.97) forwards die;
   }
   @keyframes die {
@@ -62,8 +67,19 @@
       transform: scale(0.8);
     }
   }
+  #game .goat > img.x {
+    animation: 0.8s cubic-bezier(.96,0,.34,.97) forwards fadein;
+  }
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 0.3;
+    }
+  }
 
-  #game > img.car {
+  #game img.car {
     background: yellow;
     animation-name: highlight1, highlight2;
     animation-duration: 0.21s, 0.19s;
@@ -141,9 +157,18 @@ const reducer = (state, action) => {
   }
 }
 
-const Door = props => e`<img ...${props} class="door" alt="A closed door" src="door.svg"/>`
-const Goat = props => e`<img ...${props} class="goat" alt="A goat" src="goat.svg"/>`
-const Car = props => e`<img ...${props} class="car" alt="A car" src="car.svg"/>`
+const Door = props => e`
+  <img ...${props} class=door alt="A closed door" src="door.svg"/>
+`
+const Goat = props => e`
+  <div ...${props} class=goat>
+    <img class=goat alt="A goat" src="goat.svg"/>
+    <img class=x alt="X" src="x.svg"/>
+  </div>
+`
+const Car = props => e`
+  <img ...${props} class="car" alt="A car" src="car.svg"/>
+`
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState)
