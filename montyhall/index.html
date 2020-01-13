@@ -150,8 +150,8 @@ const reducer = (state, action) => {
       switch(state.t) {
         case 'begin': return (
           state.car === args[0] ?
-          { ...state, t: 'answer_right', bait: randint_except(state.size**2, args[0]) } :
-          { ...state, t: 'answer_wrong', wrong_answer: args[0] }
+          Object.assign({}, state, { t: 'answer_right', bait: randint_except(state.size**2, args[0]) }) :
+          Object.assign({}, state, { t: 'answer_wrong', wrong_answer: args[0] })
         )
         default: return { t: 'errored' }
       }
@@ -160,8 +160,8 @@ const reducer = (state, action) => {
         case 'answer_right': // fallthrough
         case 'answer_wrong': return (
           state.car === args[0] ?
-          { ...state, t: 'win' } :
-          { ...state, t: 'lose', wrong_answer: args[0] }
+          Object.assign({}, state, { t: 'win' }) :
+          Object.assign({}, state, { t: 'lose', wrong_answer: args[0] })
         )
         default: return { t: 'errored' }
       }
@@ -245,10 +245,12 @@ function randint_except(n, except) {
 }
 
 // Manually preload images
-new Image().src = 'door.svg'
-new Image().src = 'goat.svg'
-new Image().src = 'x.svg'
-new Image().src = 'car.svg'
+const preload = repeat(4, _ => new Image())
+preload[0].src = 'door.svg'
+preload[1].src = 'goat.svg'
+preload[2].src = 'x.svg'
+preload[3].src = 'car.svg'
+window.__preload__ = preload
 </script>
 
 

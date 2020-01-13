@@ -7,7 +7,6 @@ Simple Monty Hall simulator
 - OG 이미지 적당히 넣기 <meta property="og:image" content="">
 - 트위터 카드 이미지 <meta name="twitter:image" content="">
 - Preact 버전 고정하기
-- MS Edge에서 object spread 안됨
 - 모바일 환경에 최적화하기
 - 깃헙으로 가는 링크 걸기
 - IE로 못보여준다고 메세지 보여주거나, IE 지원하기
