@@ -3,12 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title>No More Monty Hall Confusion</title>
-  <!-- TODO: favicon -->
   <meta name="description" content="Understand the Monty Hall problem at once.">
 
   <meta property="og:url" content="https://game.hyeon.me/montyhall">
   <meta property="og:title" content="No More Monty Hall Confusion">
-  <!-- TODO: OG 이미지 <meta property="og:image" content=""> -->
   <meta property="og:site_name" content="game.hyeon.me">
   <meta property="og:description" content="Understand the Monty Hall problem at once.">
 
@@ -16,7 +14,6 @@
   <meta name="twitter:title" content="No More Monty Hall Confusion">
   <meta name="twitter:description" content="Understand the Monty Hall problem at once.">
   <meta name="twitter:card" content="summary_large_image">
-  <!-- TODO: 이미지 <meta name="twitter:image" content=""> -->
   <meta name="twitter:creator" content="@simnalamburt">
   <meta name="twitter:url" content="https://game.hyeon.me/montyhall">
   <style>
@@ -63,8 +60,6 @@
 
 
 <script type="module">
-// TODO: 버전 고정하기
-// TODO: MS Edge에서 object spread 안됨
 import { h, render } from 'https://unpkg.com/preact@latest?module'
 import { useReducer } from 'https://unpkg.com/preact@latest/hooks/dist/hooks.module.js?module'
 import produce from 'https://cdn.jsdelivr.net/npm/immer@5.2.1/dist/immer.module.min.js'
@@ -118,8 +113,6 @@ const Car = props => e`<img ...${props} alt="A car" src="car.svg"/>`
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState)
-
-  // TODO: errored, win, lose 처리하기
   return e`
     <div id=game>
       ${repeat(state.size, row =>
@@ -191,6 +184,3 @@ if (!(rel && rel.supports && rel.supports('preload'))) {
 
 </body>
 </html>
-<!-- TODO: https://github.com/simnalamburt/web-checklist -->
-<!-- TODO: IE로 들어오면 경고창 띄우기 -->
-<!-- TODO: 모바일 테스트 -->
