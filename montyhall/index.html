@@ -225,7 +225,7 @@ function randint(n) {
   return (Math.random() * n)|0
 }
 
-// Return a random integer in [0, except) ∩ (except, n)
+// Return a random integer in [0, except) ∪ (except, n)
 function randint_except(n, except) {
   const ret = (Math.random() * (n - 1))|0
   return ret >= except ? ret + 1 : ret
