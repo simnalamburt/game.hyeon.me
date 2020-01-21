@@ -121,11 +121,7 @@
 
 
 <script type="module">
-import { h, render } from 'https://unpkg.com/preact@latest?module'
-import { useReducer } from 'https://unpkg.com/preact@latest/hooks/dist/hooks.module.js?module'
-import htm from 'https://cdn.jsdelivr.net/npm/htm@2.2.1/dist/htm.mjs'
-
-const e = htm.bind(h)
+import { html as e, render, useReducer } from 'https://unpkg.com/htm@3.0.1/preact/standalone.module.js'
 
 const size = 10
 let initialState = { t: 'begin', size, car: randint(size**2) }
