@@ -245,14 +245,33 @@ const Car = props => e`
   <img ...${props} class="car" alt="A car" src="car.svg"/>
 `
 
+const prefersKorean = (() => {
+  const languages = navigator.languages?.length ? navigator.languages : [navigator.language]
+  return languages.some(language => language?.toLowerCase().startsWith('ko'))
+})()
+
+const messages = prefersKorean ? {
+  winTitle: '자동차를 찾았습니다.',
+  loseTitle: '염소를 골랐습니다.',
+  winDescription: '한 판 더 해 보고 마지막 선택을 바꿨을 때도 같은지 확인해 보세요.',
+  loseDescription: '다시 해 보면서 마지막 선택을 바꿨을 때 어떻게 달라지는지 비교해 보세요.',
+  retry: '다시 하기',
+} : {
+  winTitle: 'You found the car.',
+  loseTitle: 'That was a goat.',
+  winDescription: 'Play another round and see whether switching still feels wrong.',
+  loseDescription: 'Try again and compare what happens when you switch your final choice.',
+  retry: 'Retry',
+}
+
 const App = () => {
   const [state, dispatch] = useReducer(reducer, undefined, () => createInitialState(size))
   const isFinished = state.t === 'win' || state.t === 'lose'
   const [showResult, setShowResult] = useState(false)
-  const resultTitle = state.t === 'win' ? 'You found the car.' : 'That was a goat.'
+  const resultTitle = state.t === 'win' ? messages.winTitle : messages.loseTitle
   const resultDescription = state.t === 'win' ?
-    'Play another round and see whether switching still feels wrong.' :
-    'Try again and compare what happens when you switch your final choice.'
+    messages.winDescription :
+    messages.loseDescription
 
   useEffect(() => {
     if (!isFinished) {
@@ -299,7 +318,7 @@ const App = () => {
           <div class=panel>
             <h2>${resultTitle}</h2>
             <p>${resultDescription}</p>
-            <button type=button onClick=${() => dispatch(['retry'])}>Retry</button>
+            <button type=button onClick=${() => dispatch(['retry'])}>${messages.retry}</button>
           </div>
         </section>
       `}
