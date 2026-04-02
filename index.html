@@ -1,48 +1,175 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>game.hyeon.me | My web game repository</title>
+  <meta name="description" content="My web game repository">
+  <meta property="og:title" content="game.hyeon.me">
+  <meta property="og:description" content="My web game repository">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://game.hyeon.me/">
+  <meta name="twitter:card" content="summary_large_image">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fa;
+      --surface: #ffffff;
+      --text: #24292f;
+      --muted: #57606a;
+      --border: #d0d7de;
+      --link: #0969da;
+      --quote-bg: #f6f8fa;
+    }
 
-<!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>game.hyeon.me | My web game repository</title>
-<meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="game.hyeon.me" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="My web game repository" />
-<meta property="og:description" content="My web game repository" />
-<link rel="canonical" href="https://game.hyeon.me/" />
-<meta property="og:url" content="https://game.hyeon.me/" />
-<meta property="og:site_name" content="game.hyeon.me" />
-<script type="application/ld+json">
-{"description":"My web game repository","@type":"WebSite","url":"https://game.hyeon.me/","name":"game.hyeon.me","headline":"game.hyeon.me","@context":"https://schema.org"}</script>
-<!-- End Jekyll SEO tag -->
+    * {
+      box-sizing: border-box;
+    }
 
-  <link rel="stylesheet" href="/assets/css/style.css?v=6904a6a44fc9239dae5e732bb86038b4e4edb4b3">
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .container {
+      width: min(980px, calc(100% - 32px));
+      margin: 40px auto;
+      padding: 32px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 1px 2px rgba(27, 31, 36, 0.04);
+    }
+
+    h1 {
+      margin: 0 0 24px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      font-size: 2rem;
+      line-height: 1.25;
+    }
+
+    h1 a {
+      color: inherit;
+    }
+
+    ol {
+      margin: 0;
+      padding-left: 26px;
+    }
+
+    li + li {
+      margin-top: 28px;
+    }
+
+    li > p:first-child {
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: 1.125rem;
+      font-weight: 600;
+    }
+
+    li > p:first-child a {
+      color: inherit;
+    }
+
+    li > p + p {
+      margin: 0;
+    }
+
+    li img {
+      width: min(100%, 560px);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #fff;
+    }
+
+    blockquote {
+      margin: 0;
+      padding: 0 0 0 16px;
+      border-left: 4px solid var(--border);
+      color: var(--muted);
+      background: var(--quote-bg);
+    }
+
+    blockquote p {
+      margin: 0;
+      padding: 10px 0;
+    }
+
+    .footer {
+      margin-top: 32px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      text-align: right;
+      font-size: 0.9375rem;
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: calc(100% - 24px);
+        margin: 12px auto;
+        padding: 20px 16px;
+      }
+
+      h1 {
+        margin-bottom: 20px;
+        font-size: 1.75rem;
+      }
+
+      ol {
+        padding-left: 22px;
+      }
+
+      li + li {
+        margin-top: 24px;
+      }
+
+      li > p:first-child {
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
+<body>
+  <main class="container">
+    <h1 id="gamehyeonme"><a href="https://game.hyeon.me">game.hyeon.me</a></h1>
 
-<div class="container-lg px-3 my-5 markdown-body">
-<h1 id="gamehyeonme"><a href="https://game.hyeon.me">game.hyeon.me</a></h1>
+    <ol>
+      <li>
+        <p><a href="./wbwwb/">"We Become What We Behold"</a></p>
+        <p><a href="./wbwwb/"><img src="./wbwwb.png" alt="We Become What We Behold"></a></p>
+      </li>
+      <li>
+        <p><a href="./montyhall/">"No More Monty Hall Confusion"</a></p>
+        <blockquote>
+          <p><a href="./montyhall/"><em>Work in Progress</em></a></p>
+        </blockquote>
+      </li>
+    </ol>
 
-<ol>
-  <li>
-    <p><a href="https://game.hyeon.me/wbwwb">“We Become What We Behold”</a></p>
-
-    <p><a href="https://game.hyeon.me/wbwwb"><img src="/wbwwb.png" alt="We Become What We Behold" /></a></p>
-  </li>
-  <li>
-    <p><a href="https://game.hyeon.me/montyhall">“No More Monty Hall Confusion”</a></p>
-
-    <blockquote>
-      <p><a href="https://game.hyeon.me/montyhall"><em>Work in Progress</em></a></p>
-    </blockquote>
-  </li>
-</ol>
-
-<div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
-  This site is open source. <a href="https://github.com/simnalamburt/game.hyeon.me/edit/master/README.md">Improve this page</a>.
-</div>
-
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
-<script>anchors.add();</script>
+    <div class="footer">
+      This site is open source.
+      <a href="https://github.com/simnalamburt/game.hyeon.me">View repository</a>
+    </div>
+  </main>
+</body>
+</html>
