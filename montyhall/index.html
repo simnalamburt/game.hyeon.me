@@ -24,6 +24,8 @@
   body {
     margin: 0;
     background: #eee;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   }
 
   #game {
@@ -40,6 +42,8 @@
     height: calc(var(--game-size) + var(--padding-size));
     margin: calc(var(--padding-size)/2) auto;
     padding: calc(var(--padding-size)/2);
+    position: relative;
+    overflow: hidden;
     background: white;
     grid: repeat(var(--repeat-count), var(--door-size)) / repeat(var(--repeat-count), var(--door-size));
     grid-gap: var(--gap-size);
@@ -113,6 +117,71 @@
       transform: scale(2);
     }
   }
+
+  #result {
+    position: absolute;
+    inset: calc(var(--padding-size) / 2);
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+  }
+
+  #result .panel {
+    width: min(360px, 100%);
+    padding: 18px 20px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+    text-align: center;
+  }
+
+  #result h2 {
+    margin: 0;
+    font-size: 1.15rem;
+  }
+
+  #result p {
+    margin: 8px 0 0;
+    color: #555;
+    line-height: 1.5;
+  }
+
+  #result button {
+    margin-top: 14px;
+    padding: 11px 18px;
+    border: 0;
+    border-radius: 999px;
+    background: #111;
+    color: #fff;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  #result button:hover {
+    background: #000;
+  }
+
+  #result button:focus-visible {
+    outline: 3px solid rgba(17, 17, 17, 0.24);
+    outline-offset: 3px;
+  }
+
+  @media (max-width: 640px) {
+    #game {
+      --padding-size: 22px;
+    }
+
+    #result {
+      padding: 16px;
+    }
+
+    #result .panel {
+      width: min(320px, 100%);
+      padding: 16px;
+    }
+  }
   </style>
   <!-- Preload images -->
   <link ref=preload href=door.svg as=image importance=high>
@@ -121,10 +190,10 @@
 
 
 <script type="module">
-import { html as e, render, useReducer } from 'https://unpkg.com/htm@3.1.1/preact/standalone.module.js'
+import { html as e, render, useEffect, useReducer, useState } from 'https://unpkg.com/htm@3.1.1/preact/standalone.module.js'
 
 const size = 10
-let initialState = { t: 'begin', size, car: randint(size**2) }
+const createInitialState = (size = 10) => ({ t: 'begin', size, car: randint(size**2) })
 /*
 type State =
   { t: 'begin', size: number, car: number } |
@@ -135,7 +204,8 @@ type State =
 
 type Action =
   ['first_answer', number] |
-  ['second_answer', number]
+  ['second_answer', number] |
+  ['retry']
 */
 
 const reducer = (state, action) => {
@@ -157,6 +227,8 @@ const reducer = (state, action) => {
         )
         default: return { t: 'errored' }
       }
+    case 'retry':
+      return createInitialState(state.size)
   }
 }
 
@@ -174,7 +246,29 @@ const Car = props => e`
 `
 
 const App = () => {
-  const [state, dispatch] = useReducer(reducer, initialState)
+  const [state, dispatch] = useReducer(reducer, undefined, () => createInitialState(size))
+  const isFinished = state.t === 'win' || state.t === 'lose'
+  const [showResult, setShowResult] = useState(false)
+  const resultTitle = state.t === 'win' ? 'You found the car.' : 'That was a goat.'
+  const resultDescription = state.t === 'win' ?
+    'Play another round and see whether switching still feels wrong.' :
+    'Try again and compare what happens when you switch your final choice.'
+
+  useEffect(() => {
+    if (!isFinished) {
+      setShowResult(false)
+      return
+    }
+
+    const timer = window.setTimeout(() => {
+      setShowResult(true)
+    }, 1000)
+
+    return () => {
+      window.clearTimeout(timer)
+    }
+  }, [isFinished, state.t])
+
   return e`
     <div id=game>
       ${repeat(state.size, row =>
@@ -200,6 +294,15 @@ const App = () => {
           }
         })
       )}
+      ${showResult && e`
+        <section id=result aria-live=polite>
+          <div class=panel>
+            <h2>${resultTitle}</h2>
+            <p>${resultDescription}</p>
+            <button type=button onClick=${() => dispatch(['retry'])}>Retry</button>
+          </div>
+        </section>
+      `}
     </div>
     <style>
     #game {
